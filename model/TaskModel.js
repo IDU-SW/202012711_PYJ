@@ -38,7 +38,7 @@ class Task {
         });
     }
 
-    updateTask(taskId, task, subject, deadline, done) {
+    updateTask(taskId, done) {
         return new Promise((resolve, reject) => {
             for (var task of this.tasks ) {
                 if ( task.id == taskId ) {
@@ -55,7 +55,6 @@ class Task {
         return new Promise((resolve, reject) => {
             for (var task of this.tasks ) {
                 if ( task.id == taskId ) {
-                    console.log("test1");
                     this.tasks.pop(task);
                     resolve(task);
                     return;
