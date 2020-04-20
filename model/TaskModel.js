@@ -50,6 +50,20 @@ class Task {
             reject({msg:'Can not update task', code:404});
         });
     }
+
+    deleteTask(taskId) {
+        return new Promise((resolve, reject) => {
+            for (var task of this.tasks ) {
+                if ( task.id == taskId ) {
+                    console.log("test1");
+                    this.tasks.pop(task);
+                    resolve(task);
+                    return;
+                }
+            }
+            reject({msg:'Can not find that named task', code:404});
+        });
+    }
 }
 
 module.exports = new Task();

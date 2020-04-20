@@ -5,7 +5,8 @@ const tasks = require('../model/TaskModel');
 router.get('/tasks', showTaskList);
 router.get('/tasks/:taskId', showTaskDetail);
 router.post('/tasks', addTask);
-router.post('/tasks/update', updateTask);
+router.put('/tasks', updateTask);
+router.delete('/tasks', deleteTask);
 
 module.exports = router;
 
@@ -69,6 +70,24 @@ async function updateTask(req, res) {
     try {
         const result = await tasks.updateTask(id, task, subject, deadline, done);
         res.send({msg:'success', data:result});
+    }
+    catch ( error ) {
+        res.status(500).send(error.msg);
+    }
+}
+// task 삭제
+async function deleteTask(req, res) {
+    const id = req.body.id;
+
+    if (!id) {
+        res.status(400).send({error:'id 누락'});
+        return;
+    }
+
+    try {
+        console.log("test1");
+        const result = await tasks.deleteTask(id);
+        res.send('success');
     }
     catch ( error ) {
         res.status(500).send(error.msg);
