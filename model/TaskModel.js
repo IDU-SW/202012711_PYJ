@@ -37,6 +37,19 @@ class Task {
             resolve(newTask);
         });
     }
+
+    updateTask(taskId, task, subject, deadline, done) {
+        return new Promise((resolve, reject) => {
+            for (var task of this.tasks ) {
+                if ( task.id == taskId ) {
+                    task.done = done;
+                    resolve(task);
+                    return;
+                }
+            }
+            reject({msg:'Can not update task', code:404});
+        });
+    }
 }
 
 module.exports = new Task();
