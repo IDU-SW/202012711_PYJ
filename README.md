@@ -15,7 +15,7 @@
 
 ##### - npm i express
 
-##### - npm i pug
+##### - npm i ejs
 
 ##### - npm i method-override
 
