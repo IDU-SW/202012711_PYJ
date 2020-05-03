@@ -56,7 +56,11 @@
 | 컨텐트 타입 | JSON                                                         |
 | ----------- | ------------------------------------------------------------ |
 | 메세지 구조 | - id : 과제 ID<br />- title : 과제명 <br />- subject : 과목명 <br />- deadline : 마감일 <br />- done : 수행여부 |
-| 메세지 예   | {<br />    "data": [<br />    {<br />        "id": 0,<br />        "task": "서비스 작성하고 사용하기",<br />        "subject": "IT기술실무",<br />        "deadline": "2020.04.27",<br />        "done": "NO"<br />    },<br />    {<br />        "id": 1,<br />        "task": "FrontController 패턴"<br />        "subject": "컴퓨터신기술특강",<br />        "deadline": "2020.04.22",<br />     "done": "NO"<br />    }<br />    ],<br />    "count": 2<br />} |
+| 메세지 예   | <pre><br />{<br />    "data": [<br />    {<br />        "id": 0,<br />        "task": "서비스 작성하고 사용하기",<br />        "subject": "IT기술실무",<br />        "deadline": "2020.04.27",<br />        "done": "NO"<br />    },<br />    {<br />        "id": 1,<br />        "task": "FrontController 패턴"<br />        "subject": "컴퓨터신기술특강",<br />        "deadline": "2020.04.22",<br />     "done": "NO"<br />    }<br />    ],<br />    "count": 2<br />}</pre> |
+
+
+
+
 
 
 
