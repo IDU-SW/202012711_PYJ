@@ -38,12 +38,15 @@ class Task {
         });
     }
 
-    updateTask(taskId, done) {
+    updateTask(taskId, task, subject, deadline, done) {
         return new Promise((resolve, reject) => {
-            for (var task of this.tasks ) {
-                if ( task.id == taskId ) {
-                    task.done = done;
-                    resolve(task);
+            for (var data of this.tasks ) {
+                if ( data.id == taskId ) {
+                    data.task = task;
+                    data.subject = subject;
+                    data.deadline = deadline;
+                    data.done = done;
+                    resolve(data);
                     return;
                 }
             }
@@ -55,7 +58,7 @@ class Task {
         return new Promise((resolve, reject) => {
             for (var task of this.tasks ) {
                 if ( task.id == taskId ) {
-                    this.tasks.pop(task);
+                    this.tasks.splice(taskId, 1);
                     resolve(task);
                     return;
                 }
