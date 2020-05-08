@@ -13,13 +13,13 @@ router.delete('/tasks/:taskId', deleteTask);
 module.exports = router;
 
 // 모든 리스트
-function showTaskList(req, res) {
-    const taskList = tasks.getTaskList();
+async function showTaskList(req, res) {
+    const taskList = await tasks.getTaskList();
     const result = { data:taskList, count:taskList.length };
     res.render('taskList',result);
 }
 
-// 하나의 리스트
+// 상세 페이지
 async function showTaskDetail(req, res) {
     try {
         // 영화 상세 정보 Id
@@ -86,8 +86,9 @@ async function updateTask(req, res) {
     const done = req.body.done;
 
     try {
-        const result = await tasks.updateTask(id, task, subject, deadline, done);
-        res.render('taskDetail',{msg:'success', data:result});
+        const _ = await tasks.updateTask(id, task, subject, deadline, done);
+        const info = await tasks.getTaskDetail(id);
+        res.render('taskDetail',{data:info});
     }
     catch ( error ) {
         res.status(500).send(error.msg);
@@ -97,8 +98,8 @@ async function updateTask(req, res) {
 async function deleteTask(req, res) {
     const id = req.params.taskId;
     try {
-        const result = await tasks.deleteTask(id);
-        const taskList = tasks.getTaskList();
+        const _ = await tasks.deleteTask(id);
+        const taskList = await tasks.getTaskList();
         const data = { data:taskList, count:taskList.length };
         res.render('taskList',data);
     }
