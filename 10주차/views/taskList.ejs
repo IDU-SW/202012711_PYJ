@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<style>
+    .buttons {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+<head>
+    <meta charset="UTF-8" />
+    <title>202012711 박유진</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>Waiting for <%= count %> assignments</h1>
+    <% for(var task of data){ %>
+    <h3><a href='/tasks/<%= task.id %>'> <%= task.id %>.<%= task.task %> </a></h3>
+    과목: <%= task.subject %> / 
+    제출일 : <%= task.deadline %>
+    <br>
+    <% } %>
+    <br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="buttons" onclick="location.href='/tasks/new'">과제 추가</button>
+</body>
+</html>

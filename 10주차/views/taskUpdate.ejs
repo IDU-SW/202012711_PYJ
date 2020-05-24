@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<style>
+    input[type="submit"], 
+    input[type="button"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    input[type="text"] {
+        width:200px;
+        height:20px;
+        font-size:12px;
+    }
+</style>
+<head>
+    <meta charset="UTF-8" />
+    <title>202012711 박유진</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>새로운 과제</h1>
+    <form action= "/tasks/<%= data.id %>?_method=put" method="post" >
+    <h3>
+<pre>
+과제명   : <input type="text" name="task" value="<%= data.task %>"></br></br>
+과목명   : <input type="text" name="subject" value="<%= data.subject %>"></br></br>
+마감일   : <input type="text" name="deadline" value="<%= data.deadline %>"></br></br>
+수행여부 : <input type="text" name="done" value="<%= data.done %>"></br>
+</pre>
+
+    </h3>   
+    
+    <input type="submit" value="  변 경 완 료  ">  <input type="button" value="  돌 아 가 기  " onclick="history.back(-1)">
+    </form>
+</body>
+</html>
