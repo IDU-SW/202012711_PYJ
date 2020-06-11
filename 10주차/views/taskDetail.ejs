@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<style>
+    input[type="submit"], 
+    input[type="button"] {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+<head>
+    <meta charset="UTF-8" />
+    <title>202012711 박유진</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+    <h1>과제 상세 <button class="buttons" onclick="location.href='/tasks'">목록으로</button></h1>
+    <ul>
+        <li>과제명 : <%= data.task %> </li>
+        <li>과목명 : <%= data.subject %>  </li>
+        <li>제출일 : <%= data.deadline %>  </li>
+        <li>수행 여부 : <%= data.done %>  </li>
+    </ul>
+    </br>
+</body>
+</html>

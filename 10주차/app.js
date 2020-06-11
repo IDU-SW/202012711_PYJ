@@ -1,5 +1,4 @@
 const express = require('express');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -11,11 +10,6 @@ app.set('views', __dirname + '/views');
 //app.use(methodOverride('_method'));
 app.use(bodyParser.json({}));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(session({
-    resave:false,
-    saveUninitialized:false,
-    secret:'Secret Key'})
-);
 
 const taskRouter = require('./router/taskRouter');
 app.use(taskRouter);
