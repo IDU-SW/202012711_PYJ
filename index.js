@@ -1,3 +1,3 @@
 const app = require('./app');
-app.listen(3007);
+app.listen(3006);
 

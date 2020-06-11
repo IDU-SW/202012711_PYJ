@@ -2,6 +2,11 @@ const express = require('express');
 const router = express.Router();
 const tasks = require('../model/TaskModel');
 
+router.post('/login', handleLogin);
+router.delete('/logout',handleLogout);
+router.get('/private', sendPrivateInfo);
+router.get('/public', sendPublicInfo);
+
 router.get('/tasks', showTaskList);
 router.get('/tasks/new', addTaskForm);
 router.get('/tasks/update/:taskId', updateTaskForm);
@@ -11,6 +16,53 @@ router.put('/tasks/:taskId', updateTask);
 router.delete('/tasks/:taskId', deleteTask);
 
 module.exports = router;
+
+const user = {
+    id : 'yoo',
+    password : '202012711',
+    name : 'yoojin',
+    instagram : 'https://www.instagram.com/dlwlrma'
+}
+
+function handleLogin(req, res) {
+    const id = req.body.id;
+    const password = req.body.password;
+ 
+    if ( id === user.id && password === user.password ) {
+       // 로그인 성공시 : 세션에 사용자 ID 저장
+       req.session.userid = id;
+       res.sendStatus(200);
+    }
+    else {
+       res.sendStatus(401);
+    }
+}
+ 
+function handleLogout(req, res) {
+    req.session.destroy( err => {
+       if ( err ) {
+          res.sendStatus(500);
+       }
+       else {
+          // 로그아웃 성공
+          res.sendStatus(200);
+       }
+    });
+}
+
+function sendPublicInfo(req, res) {
+    res.send({message : 'This is Public Information'});
+}
+ 
+function sendPrivateInfo(req, res) {
+    const id = req.session.userid;
+    if ( id ) {
+       res.send(user);
+    }
+    else {
+       res.sendStatus(401);
+    }
+}
 
 // 모든 리스트
 async function showTaskList(req, res) {
