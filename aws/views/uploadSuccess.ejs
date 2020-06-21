@@ -5,14 +5,11 @@
     </head>
     <body>
         <h1><File upload 페이지></h1>
-        <h1>안내 : + <%= content %> </h1>
-        <h1>파일경로 : + <%= url %> </h1>
         <img src="url">
-        <h1><File upload 페이지></h1>
             <h5>보낼 file 선택하기</h5>
         <form action="/upload" method="POST" enctype="multipart/form-data">
-            <input type="file" name="uploadfile"><br/><br/>
-            <input type="submit" value="send">
+            <input type="file" name="filename" id="filename" ><br/><br/>
+            <input type="submit" value="UPLOAD" >
         </form>
     </body>
 </html>
