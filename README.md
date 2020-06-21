@@ -23,7 +23,13 @@
 12주차 프로젝트에 인증 기능 추가하기
 
 # master
-13주차 aws
+14주차 aws
+
+npm i
+npm i pug
+npm i aws-sdk
+npm i multer
+npm i multer-s3
 
 --------------
 
