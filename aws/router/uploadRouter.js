@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const uploads = require('../model/uploadModel');
-let AWS = require("aws-sdk")
+let AWS = require("aws-sdk");
 let multer = require('multer');
 let path = require("path");
-
-let s3 = new AWS.S3();
 let multerS3 = require("multer-s3");
-
+let s3 = new AWS.S3();
 const now = new Date();
 const itemKey = 'upload/' + now.getHours() + now.getMinutes() + now.getSeconds() + Math.floor(Math.random() * 1000);
 
@@ -24,7 +22,6 @@ let upload = multer({
         location: "/upload"
     })
 })
-
 
 router.get('/upload', uploadForm); // 메인
 router.post('/upload', upload.single('filename'), uploadFile); // 파일 업로드

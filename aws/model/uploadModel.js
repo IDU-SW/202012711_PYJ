@@ -1,10 +1,9 @@
-const AWS = require('aws-sdk');
 const fs = require('fs');
-
+let AWS = require("aws-sdk");
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('example', 'admin', 'cometrue', { 
-    dialect: 'mysql', host: 'idu-2020.c47qffrxsm7g.ap-northeast-2.rds.amazonaws.com' 
-});
+const sequelize = new Sequelize('example', 'admin', 'cometrue', {
+    dialect: 'mysql', host :'idu-2020.c47qffrxsm7g.ap-northeast-2.rds.amazonaws.com'
+})
 AWS.config.loadFromPath(__dirname + "/../aws_config.json")
 
 const Upload = sequelize.define('upload', {
